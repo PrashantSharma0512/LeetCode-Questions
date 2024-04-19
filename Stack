@@ -65,4 +65,31 @@ class Solution {
         return ans;
     }
 }
-<-------------------------------------------------------------735. Asteroid Collision----------------------------------------------------------------------------->
+<-------------------------------------------------------------901. Online Stock Span----------------------------------------------------------------------------->
+class StockSpanner {
+    Stack <Integer> st ;
+    ArrayList<Integer> list;
+    public StockSpanner() {
+        st = new Stack();
+        list = new ArrayList<>();
+    }
+    
+    public int next(int price) {
+        list.add(price);
+        while(!st.isEmpty() && list.get(st.peek()) <= price){
+            st.pop();
+        }
+        int prevIndex = st.isEmpty()?-1:st.peek();
+        int currentIndex = list.size()-1;
+        int ans = currentIndex - prevIndex;
+        st.push(currentIndex);
+        return ans;
+    }
+}
+
+/**
+ * Your StockSpanner object will be instantiated and called as such:
+ * StockSpanner obj = new StockSpanner();
+ * int param_1 = obj.next(price);
+ */
+<-------------------------------------------------------------901. Online Stock Span----------------------------------------------------------------------------->
